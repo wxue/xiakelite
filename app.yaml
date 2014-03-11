@@ -1,0 +1,19 @@
+application: xiakelite
+version: 10
+runtime: python27
+api_version: 1
+threadsafe: yes
+
+default_expiration: "7d"
+
+handlers:
+- url: /favicon\.ico
+  static_files: favicon.ico
+  upload: favicon\.ico
+
+- url: .*
+  script: main.app
+
+libraries:
+- name: webapp2
+  version: "2.5.2"
