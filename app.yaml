@@ -4,12 +4,14 @@ runtime: python27
 api_version: 1
 threadsafe: yes
 
-default_expiration: "7d"
+default_expiration: "1m"    # test only
+# default_expiration: "7d"  # uncomment before deploy
 
 handlers:
 - url: /favicon\.ico
-  static_files: favicon.ico
-  upload: favicon\.ico
+  mime_type: image/png
+  static_files: static/favicon.ico
+  upload: static/favicon.ico
 
 - url: .*
   script: main.app
