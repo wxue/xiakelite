@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block title %}{% endblock %}
+
+{% block main %}
+
+<div>
+  <h5>All Users</h5>
+  <br>
+  <small>新注册用户请刷新页面，获取最新用户列表。</small>
+  <br><br>
+  {% for user in users %}
+    <h6><a>SignUp Count: {{ user.number }}<br>
+    &nbsp&nbsp User Name: {{ user.title }}<br> 
+    &nbsp&nbsp Signed Up Time: {{ user.added|format_date }}</a></h6>
+    <br>
+  {% endfor %}
+</div>
+{% endblock %}

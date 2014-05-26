@@ -1,0 +1,112 @@
+{% extends "base.html" %}
+
+{% block title %}{% endblock %}
+
+{% block main %}
+
+<h2>Standard Markdown</h2>
+<h5>Strong and Emphasize</h5>
+<pre><code>*emphasize*   **strong**
+_emphasize_   __strong__
+</code></pre>
+<h5>Links and Email</h5>
+<p>Inline:</p>
+<pre><code>An [example](http://url.com/ "Title")
+</code></pre>
+<p>Reference-style labels (titles are optional):</p>
+<pre><code>An [example][id]. Then, anywhere
+else in the doc, define the link:
+
+  [id]: http://example.com/  "Title"
+</code></pre>
+<p>Email:</p>
+<pre><code>An email &lt;example@example.com&gt; link.
+</code></pre>
+<h5>Images</h5>
+<p>Inline (titles are optional):</p>
+<pre><code>![alt text](/path/img.jpg "Title")
+</code></pre>
+<p>Reference-style:</p>
+<pre><code>![alt text][id]
+
+[id]: /url/to/img.jpg "Title"
+</code></pre>
+<h5>Headers</h5>
+<p>Setext-style:</p>
+<pre><code>Header 1
+========
+
+Header 2
+--------
+</code></pre>
+<p>atx-style (closing #&rsquo;s are optional):</p>
+<pre><code># Header 1 #
+
+## Header 2 ##
+
+###### Header 6
+</code></pre>
+<h5>Lists</h5>
+<p>Ordered, without paragraphs:</p>
+<pre><code>1.  Foo
+2.  Bar
+</code></pre>
+<p>Unordered, with paragraphs:</p>
+<pre><code>*   A list item.
+
+    With multiple paragraphs.
+
+*   Bar
+</code></pre>
+<p>You can nest them:</p>
+<pre><code>*   Abacus
+    * answer
+*   Bubbles
+    1.  bunk
+    2.  bupkis
+        * BELITTLER
+    3. burper
+*   Cunning
+</code></pre>
+<h5>Blockquotes</h5>
+<pre><code>&gt; Email-style angle brackets
+&gt; are used for blockquotes.
+
+&gt; &gt; And, they can be nested.
+
+&gt; #### Headers in blockquotes
+&gt; 
+&gt; * You can quote a list.
+&gt; * Etc.
+</code></pre>
+<h5>Inline Code</h5>
+<pre><code>`&lt;code&gt;` spans are delimited
+by backticks.
+
+You can include literal backticks
+like `` `this` ``.
+</code></pre>
+<h5>Block Code</h5>
+<p>Indent every line of a code block by at least 4 spaces or 1 tab.</p>
+<pre><code>This is a normal paragraph.
+
+    This is a preformatted
+    code block.
+</code></pre>
+<h5>Horizontal Rules</h5>
+<p>Three or more dashes or asterisks:</p>
+<pre><code>---
+
+* * *
+
+- - - - 
+</code></pre>
+<h5>Hard Line Breaks</h5>
+<p>End a line with two or more spaces:</p>
+<pre><code>Roses are red,   
+Violets are blue.
+</code></pre>
+
+<p>This document is from the <a href="http://mouapp.com/">Mou</a> app on Mac OS X</p>
+
+{% endblock %}

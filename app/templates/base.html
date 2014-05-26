@@ -1,0 +1,25 @@
+{% extends "frame.html" %}
+
+{% block nav %}
+        <div style="position:fixed;left: 15px; top: 5px;">
+            <a href="/"><img src="/img/home.png" alt="" style="vertical-align:middle;">
+        </div>
+        <div id="tools" style="left: 66px; top: 60px;">
+           
+            <a id="nav-blog" class="nav" href="/blog/">
+                <!-- <span>Blog</span> -->
+            </a>
+            <a id="nav-doc" class="nav" href="/excerpt/">
+                <!-- <span>Excerpt</span> -->
+            </a>
+            <a id="nav-about" class="nav" href="/about/">
+                <!-- <span>About</span> -->
+            </a>
+            <a id="nav-lab" class="nav" href="/lab/entrance/">
+                <!-- <span>Lab</span> -->
+            </a>
+        </div>
+        <div id="sidelegend" style="right: 0px; bottom: 10px;">
+            <a href="/console/">|Writer Console|</a>
+        </div>
+{% endblock %}

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title>Blogs From XiakeLite</title>
+  <link href="http://home.xiakelite.com/"/>
+  <updated>2013-08-24T17:30:00Z</updated>
+  <author>
+    <name>T-Wind | Vivian</name>
+  </author>
+  <id>http://home.xiakelite.com/</id>
+
+{% for article in articles %}
+  <entry>
+    <title>{{ article.title }}</title>
+    <link href="http://home.xiakelite.com/a/{{ article.number }}"/>
+    <id>http://home.xiakelite.com/a/{{ article.number }}</id>
+    <updated>{{ article.added }}</updated>
+    <summary> Tags:{{ article.tags }} </summary>
+  </entry>
+{% endfor %}
+</feed>

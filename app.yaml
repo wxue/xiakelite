@@ -1,11 +1,13 @@
 application: xiakelite
 version: 10
-runtime: python27
+runtime: python
 api_version: 1
 threadsafe: yes
 
-default_expiration: "1m"    # test only
-# default_expiration: "7d"  # uncomment before deploy
+
+# default_expiration: "1m"    # test only
+default_expiration: "7d"  # uncomment before deploy
+
 
 skip_files:
 - ^(.*/)?app\.yaml

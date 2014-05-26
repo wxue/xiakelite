@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<!-- saved from url=(0030)http://localhost:10080/edit/2/ -->
+<html class=""><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <title>XiakeLite</title>
+    <meta name="description" content="XiakeLite">
+    <meta name="author" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./XiakeLite_files/main.css" type="text/css">
+    
+<style>
+.errors { color:red; }
+h1{ font-size:20px; }
+#title, #tags { width:100%; height:1.5em; }
+textarea {height: 200px; width: 100%;padding:2px; }
+.preview {border: 2px solid #999999; background-color:#DDDDDD; font-size:14px; padding:2px 8px 2px 8px; margin-left:20px;}
+#preview {border: 2px solid green;padding:2px 8px 2px 8px;}
+</style>
+
+    
+<style type="text/css"></style><style type="text/css">.fancybox-margin{margin-right:0px;}</style></head>
+
+<body data-gclp-initialized="true" data-gistbox-initialized="true">
+    <div id="overlay">
+      
+        <div style="position:fixed;left: 15px; top: 5px;">
+            <a href="http://localhost:10080/"><img src="./XiakeLite_files/home.png" alt="" style="vertical-align:middle;">
+        </a></div><a href="http://localhost:10080/">
+        </a><div id="tools" style="left: 66px; top: 60px;"><a href="http://localhost:10080/">
+           
+            </a><a id="nav-blog" class="nav" href="http://localhost:10080/blog/">
+                <!-- <span>Blog</span> -->
+            </a>
+            <a id="nav-doc" class="nav" href="http://localhost:10080/excerpt/">
+                <!-- <span>Excerpt</span> -->
+            </a>
+            <a id="nav-about" class="nav" href="http://localhost:10080/about/">
+                <!-- <span>About</span> -->
+            </a>
+            <a id="nav-lab" class="nav" href="http://localhost:10080/lab/entrance/">
+                <!-- <span>Lab</span> -->
+            </a>
+        </div>
+        <div id="sidelegend" style="right: 0px; bottom: 10px;">
+            <a href="http://localhost:10080/console/">|Writer Console|</a>
+        </div>
+
+      <!-- Click bar to go back top -->
+      <div id="Top">
+      </div>
+      <div id="sidelegend" style="right: 0px; top: 10px;">
+        <a href="http://localhost:10080/edit/2/#Top">^Back to Top^</a>
+      </div>
+      <div id="inner" class="margin-wide size-medium">
+      
+        <div id="content">
+          
+  <h1>Add New Article</h1>
+
+  
+  
+  <form id="main_form" action="./XiakeLite_files/XiakeLite.html" method="post">
+      <p><a href="http://localhost:10080/md/" target="_blank">关于markdown写作语法请戳这里进行速查</a></p>
+      <p></p><div style="display:none;"><input id="csrf" name="csrf" type="hidden" value="501cd83c-496a-4c26-8a9c-4be487aa327a"></div><p></p>
+      <p>
+</p><p>
+  <label for="title">Title</label>
+  <br>
+  <input id="title" name="title" placeholder="标题" type="text" value="Markdown测试">
+  
+</p>
+<p></p>
+      <p>
+</p><p>
+  <label for="content">Content</label>
+  <br>
+  <textarea id="content" name="content">*emphasize*   **strong**
+_emphasize_   __strong__</textarea>
+  
+</p>
+<p></p>
+      <p>
+</p><p>
+  <label for="tags">Tags</label>
+  <br>
+  <input id="tags" name="tags" placeholder="第一个tag请表明作者; tag尽量与现有同名以便读者归类查找" type="text" value="">
+  
+</p>
+<p></p>
+      <p>
+</p><p>
+  <label for="is_public">Is Public</label>
+  <br>
+  <input checked="checked" id="is_public" name="is_public" type="checkbox" value="y">
+  
+</p>
+<p></p>
+      <p>
+</p><p>
+  <label for="is_excerpt">Is Excerpt</label>
+  <br>
+  <input id="is_excerpt" name="is_excerpt" type="checkbox" value="y">
+  
+</p>
+<p></p>
+      <p class="submit"><input id="submit" name="submit" type="submit" value="Create Article" onclick="setTimeout(disable_btn, 1)"> <a class="preview" onclick="preview()" href="javascript:void()">Preview</a></p>
+  </form>
+
+  <div id="preview"></div>
+  <div>
+    <strong style="color:red;">Warning:</strong>
+    Above is preview only, be sure to push "Create Article" button to save it.
+  </div>
+
+          <br>
+        </div><!-- End of "content" -->
+
+        <div id="footer"> 
+          <div id="footer-left">
+          Copyright ©  2013  
+          <a href="http://localhost:10080/about/">XiakeLite</a>
+          &nbsp; Powered by <a href="http://localhost:10080/about/T-Wind/">T-Wind</a>
+        </div> 
+        <div id="footer-right">  
+          XiakeLite 
+          <a href="http://localhost:10080/">V1.0</a> 
+        </div>
+
+      </div><!-- End of "inner" -->
+    </div><!-- End of "overlay" -->
+  
+<script type="text/javascript">
+function preview() {
+    var obj = document.getElementById("preview");
+    var xmlhttp = new XMLHttpRequest();
+    xmlhttp.onreadystatechange = function() {
+        if (xmlhttp.readyState == 4 && xmlhttp.status == 200)
+            obj.innerHTML = xmlhttp.responseText;
+    }
+    xmlhttp.open("POST", "/ajax/markdown/", true);
+    xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    var content = document.getElementById("content").value;
+    xmlhttp.send("text=" + encodeURIComponent(content));
+}
+
+function disable_btn() {
+    var btn = document.getElementById("submit");
+    btn.value = 'Please Waiting...';
+    btn.disabled = "disabled";
+}
+document.getElementById("submit").setAttribute("onclick", "setTimeout(disable_btn, 1)");
+</script>
+
+
+</div><form id="gclp-frame-form" target="gclp-frame" method="post" style="display: none;"></form></body></html>

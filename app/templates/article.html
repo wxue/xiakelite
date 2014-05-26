@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+
+
+{% block title %}{{ article.title }}{% endblock %}
+
+{% block main %}
+<!-- Content -->
+<div id="entry">
+    <h2 class="entry-title">{{ article.title }}</h2>
+    {% if article.tags %}Tags: {{ article.tags|link_tags|safe }}{% endif %} 
+
+    <div class="entry-content">
+    {{ article.content|pygments_markdown|safe }}
+    </div>
+
+    <div class="entry-meta">
+    <small> ->文章发表时间: {{ article.added|format_date }} <-</small>
+    </div>
+</div>
+<br><br>
+
+{% if form and article.is_excerpt %}
+<div id="comment_container">
+  <h6>评论&留言:</h6>
+  {% for comment in comments %}
+  <div class="comment">
+    <strong>{{ comment.author }}({{ comment.email }})</strong> at {{ comment.added|format_date }}<br />
+    <div class="comment-content">
+    {{ comment.comment|pygments_markdown|safe }}
+    </div>
+    <p>- - - - - - - - - -</p>
+  </div>
+  {% endfor %}
+
+  {% from "_comment_form_helpers.html" import render_field %}
+  <form id="main_form" action="." method="post">
+      <p>{{ form.hidden_tag() }}</p>
+      <p>{{ render_field(form.author, placeholder="请留名于此") }}</p>
+      <p>{{ render_field(form.email, placeholder="Email") }}</p>
+      <p>{{ render_field(form.checker, placeholder="验证（请填当前月序号？数字）") }}</p>
+      <p>{{ render_field(form.comment, placeholder="留言/评论(提交后请刷新)") }}</p>
+      <p class="submit">{{ form.submit }}</p>
+  </form>
+</div>
+
+{% endif %}
+
+<div id="sidelegend" style="right: 0px; top: 40px;">
+  {% if latestmarker %}
+  <a href="/a/{{ article.number+1 }}"> <-- Newer</a>
+  {% else %}
+  <a href="/a/{{ article.number }}"> |-- Latest</a>
+  {% endif %}
+</div>
+<div id="sidelegend" style="right: 0px; top: 70px;">
+  {% if article.number>1 %}
+  <a href="/a/{{ article.number-1 }}">Older --></a>
+  {% else %}
+  <a href="/a/{{ article.number }}">The Very First-- |</a>
+  {% endif %}
+</div>
+
+{% endblock %}

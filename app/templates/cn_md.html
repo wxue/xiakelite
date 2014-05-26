@@ -1,0 +1,233 @@
+{% extends "base.html" %}
+
+{% block script %}
+<script language="JavaScript">
+function onClickDiv(DivId)
+{
+  if(document.getElementById(DivId).style.display=='none') { 
+    document.getElementById(DivId).style.display=''; 
+  }
+  else { 
+    document.getElementById(DivId).style.display='none'; 
+  }
+}
+</script>
+{% endblock %}
+
+{% block title %}{% endblock %}
+
+{% block main %}
+
+<h2>Markdown写作格式样例注解</h2>
+<a href="javascript:onClickDiv('item0')"><h5>斜体字/粗体字</h5></a>
+<div id="item0" style="display:none">
+  <pre><code>
+  *斜体*   
+  _斜体_   
+  </code></pre>
+  <small><font color="green">预览:</font></small>
+  <p><em>斜体</em><br />
+  <p> - - - - - - - - - - - - - - </p>
+  <pre><code>
+  __粗体__
+  **粗体**
+  </code></pre>
+  <small><font color="green">预览:</font></small>
+  <p><strong>粗体</strong></p>
+  <p> - - - - - - - - - - - - - - </p>
+</div>
+
+<a href="javascript:onClickDiv('item1')"><h5>添加链接以及邮箱链接</h5></a>
+<div id="item1" style="display:none">
+  <small>请将<em>http://example.com/</em>更换为你要链接到的网页网址。(标题，是鼠标放到链接上会显示的字，可缺省)</small>
+  <pre><code>一个[要链接的文字](http://example.com/ "标题")
+  </code></pre>
+  <small>方法二：索引式的链接添加方式:</small>
+  <pre><code>一个[要链接的文字][id]
+  然后在文中后面或者任意地方声明要链接的网页网址，方式如下： 
+  [id]: http://example.com/  "标题"
+  </code></pre>
+  <small><font color="green">预览:</font></small>
+  <p>一个<a href="http://example.com/" title="标题">要链接的文字</a></p>
+  <p> - - - - - - - - - - - - - - </p>
+  <pre><code>一个 email &lt;example@example.com&gt; 链接样例.
+  </code></pre>
+  <small><font color="green">预览:</font></small>
+  <p>一个 email <a href="mailto:example@example.com">&#101;&#120;&#97;&#109;&#112;&#108;&#101;&#64;&#101;&#120;&#97;&#109;&#112;&#108;&#101;&#46;&#99;&#111;&#109;</a> 链接样例.</p>
+  <p> - - - - - - - - - - - - - - </p>
+</div>
+
+<a href="javascript:onClickDiv('item2')"><h5>添加照片图片</h5></a>
+<div id="item2" style="display:none">
+  <small>照片比较占空间，咱们的网站暂时没法存储大量图片。请讲你的图片可以先发布到其他图片网站上，例如你的QQ空间，微博，或者网盘，云空间里，拷贝你上传后照片的地址。然后将<em>http://www.baidu.com/img/bdlogo.gif</em>更换为你要添加的图片地址。(标题可缺省):</small>
+  <pre><code>![alt text](http://www.baidu.com/img/bdlogo.gif "标题")
+  </code></pre>
+  <p>方法二:</p>
+  <pre><code>![alt text][id]
+
+  [id]: http://www.baidu.com/img/bdlogo.gif "标题"
+  </code></pre>
+  <small><font color="green">预览:</font></small>
+  <p><img alt="alt text" src="http://www.baidu.com/img/bdlogo.gif" title="标题"></p>
+  <p> - - - - - - - - - - - - - - </p>
+</div>
+
+<a href="javascript:onClickDiv('item3')"><h5>标题样式</h5></a>
+<div id="item3" style="display:none">
+  <pre><code>
+  # 1号标题 
+
+  ## 2号标题
+
+  ### 3号标题 
+
+  #### 4号标题 
+
+  ##### 5号标题 
+
+  ###### 6号标题
+  </code></pre>
+  <small><font color="green">预览:</font></small>
+  <h1>1号标题</h1>
+  <h2>2号标题</h2>
+  <h3>3号标题</h3>
+  <h4>4号标题</h4>
+  <h5>5号标题</h5>
+  <h6>6号标题</h6>
+  <p> - - - - - - - - - - - - - - </p>
+</div>
+
+<a href="javascript:onClickDiv('item4')"><h5>列表</h5></a>
+<div id="item4" style="display:none">
+  <pre><code>1.  条目一
+  2.  条目二
+  </code></pre>
+  <li>条目一</li>
+  <li>条目二</li>
+  <p> - - - - - - - - - - - - - - </p>
+  <pre><code>*   条目举例
+
+      无序号条目
+
+  *   条目举例
+  </code></pre>
+  <ul>
+  <li>
+  <p>条目举例</p>
+  <p>无序号条目</p>
+  </li>
+  <li>
+  <p>条目举例</p>
+  </li>
+  </ul>
+  <p> - - - - - - - - - - - - - - </p>
+  <pre><code>*   条目
+      * 子条目
+  *   条目
+      1.  子条目一
+      2.  子条目二
+          * 次条目
+      3. 子条目三
+  *   条目
+  </code></pre>
+  <small><font color="green">预览:</font></small>
+  <ul>
+  <li>条目<ul>
+  <li>子条目</li>
+  </ul>
+  </li>
+  <li>条目<ol>
+  <li>子条目一</li>
+  <li>子条目二<ul>
+  <li>次条目</li>
+  </ul>
+  </li>
+  <li>子条目三</li>
+  </ol>
+  </li>
+  <li>条目</li>
+  </ul>
+  <p> - - - - - - - - - - - - - - </p>
+</div>
+
+<a href="javascript:onClickDiv('item5')"><h5>文字引用</h5></a>
+<div id="item5" style="display:none">
+  <pre><code>&gt; 引用段
+
+  &gt; &gt; 引用段落层次
+
+  &gt; #### 引用段标题
+  &gt; 
+  &gt; * 引用段列表。
+  &gt; * 引用段列表。
+  </code></pre>
+  <small><font color="green">预览:</font></small>
+  <blockquote>
+  <p>引用段</p>
+  <blockquote>
+  <p>引用段落层次</p>
+  </blockquote>
+  <h4>引用段标题</h4>
+  <ul>
+  <li>引用段列表。</li>
+  <li>引用段列表。</li>
+  </ul>
+  </blockquote>
+  <p> - - - - - - - - - - - - - - </p>
+</div>
+
+<a href="javascript:onClickDiv('item6')"><h5>特殊字符</h5></a>
+<div id="item6" style="display:none">
+  <pre><code>字符`用来区分格式，无法直接打出，故需加在前面上`。如``来正常显示。
+  </code></pre>
+  <p> - - - - - - - - - - - - - - </p>
+</div>
+
+<a href="javascript:onClickDiv('item7')"><h5>独立段落</h5></a>
+<div id="item7" style="display:none">
+  <pre><code>
+  &nbsp&nbsp&nbsp&nbsp如果一个段落前有一个TAB或者4个以上空格会使对应段变成独立行段，即像这样不换行。不换行不换行不换行不换行不换行不换行不换行不换行不换行不换行不换行不换行不换行不换行不换行不换行不换行不换行不换行不换行不换行不换行不换行不换行不换行不换行不换行不换行不换行不换行不换行不换行不换行不换行
+  </code></pre>
+  <p> - - - - - - - - - - - - - - </p>
+</div>
+
+<a href="javascript:onClickDiv('item8')"><h5>换行</h5></a>
+<div id="item8" style="display:none">
+  <pre><code>
+  通常在段落结束打两个回车以换行。
+
+  两段中间会隔开一行。
+
+  或者，在一行以两个（以上）空格结尾，   
+  下一行会换行，但不会空行，否则会接续在同一行。
+  </code></pre>
+</div>
+
+<div id="sidelegend" style="right: 0px; top: 40px;">
+  <a href="#item0">斜体字/粗体字</a>
+</div>
+<div id="sidelegend" style="right: 0px; top: 75px;">
+  <a href="#item1">添加链接以及邮箱链接</a>
+</div>
+<div id="sidelegend" style="right: 0px; top: 110px;">
+  <a href="#item2">添加照片图片</a>
+</div>
+<div id="sidelegend" style="right: 0px; top: 145px;">
+  <a href="#item3">标题样式</a>
+</div>
+<div id="sidelegend" style="right: 0px; top: 180px;">
+  <a href="#item4">列表</a>
+</div>
+<div id="sidelegend" style="right: 0px; top: 215px;">
+  <a href="#item5">文字引用</a>
+</div>
+<div id="sidelegend" style="right: 0px; top: 250px;">
+  <a href="#item6">特殊字符</a>
+</div>
+<div id="sidelegend" style="right: 0px; top: 285px;">
+  <a href="#item7">独立段落</a>
+</div>
+<div id="sidelegend" style="right: 0px; top: 320px;">
+  <a href="#item8">换行</a>
+</div>
+{% endblock %}

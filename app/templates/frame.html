@@ -1,0 +1,44 @@
+<!doctype html>
+<head>
+    <meta charset="utf-8">
+    <title>XiakeLite</title>
+    <meta name="description" content="XiakeLite">
+    <meta name="author" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/css/main.css" type="text/css" />
+    {% block css %}{% endblock %}
+    {% block script %}{% endblock %}
+</head>
+
+<body>
+    <div id="overlay">
+      {% block nav %}{% endblock %}
+      <!-- Click bar to go back top -->
+      <div id="Top">
+      </div>
+      <div id="sidelegend" style="right: 0px; top: 10px;">
+        <a href="#Top">^Back to Top^</a>
+      </div>
+      <div id="inner" class="margin-wide size-medium">
+      
+        <div id="content">
+          {% block main %}{% endblock %}
+          <br>
+        </div><!-- End of "content" -->
+
+        <div id=footer> 
+          <div id=footer-left>
+          Copyright &copy;  2013  
+          <a href="/about/">XiakeLite</a>
+          &nbsp Powered by <a href="/about/T-Wind/">T-Wind</a>
+        </div> 
+        <div id=footer-right>  
+          XiakeLite 
+          <a href="/">V1.0.1</a> 
+        </div>
+
+      </div><!-- End of "inner" -->
+    </div><!-- End of "overlay" -->
+  {% block js %}{% endblock %}
+</body>
+</html>

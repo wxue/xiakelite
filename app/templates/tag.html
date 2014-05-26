@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block title %}{% endblock %}
+
+{% block main %}
+
+<div>
+  <h2>{{ tag }}</h2>
+  <p>所有含"{{ tag }}" Tag的文章:</p>
+  {% for article in articles %}
+    <h6><a href="{{ article.get_absolute_url() }}">{{ article.title }}</a></h6>
+    {% if article.tags %}Tags: {{ article.tags|link_tags|safe }}{% endif %}
+  {% endfor %}
+</div>
+<br>
+{% endblock %}

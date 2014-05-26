@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+
+{% block main %}
+<div>
+  <h2>Writer Console</h2>
+  <small>“写文字的人”的后院</small><br><br>
+
+  <div>
+    <h5><a href="/add/"><img src="/img/goto.png" height="20" width="20" alt="" style="vertical-align:middle;"></a>Add New Articles</h5>
+    &nbsp&nbsp&nbsp&nbsp <a href="/add/"><small>--添加新文章</small></a>
+    <p> > 文章完成后请勾选"Is Public"再发布。否则，只当做草稿保存到后台以待继续编辑。</p>
+    <p> > 如果要发布到Excerpt摘抄栏目请勾选"Is Excerpt"，未勾选的将按Blog博文发布。</p>
+    <p> > 强烈建议在自己电脑上先写好备份之后再发布上来，以防数据丢失。</p>
+    <p> > 文章按Markdown通用格式编辑，有关Markdown请参考<a href="#mdqc">Markdown QuickCheck</a></p>
+  </div>
+  <br>
+  <div>
+    <h5><a href="/edit/"><img src="/img/goto.png" height="20" width="20" alt="" style="vertical-align:middle;"></a>Edit Articles</h5>
+    &nbsp&nbsp&nbsp&nbsp <a href="/edit/"><small>--修改已存文章</small></a>
+    <p> > 点击相应文章后面"Edit"进行修改。但请不要改动其他作者文章。:D</p>
+    <p> > 文章前标有(Draft)表示为草稿，尚未发布，可以继续编辑。(当然，已发布的也可以随时修改。)</p>
+  </div>
+  <br>
+  <div id="mdqc">
+    <h5><a href="/md/"><img src="/img/goto.png" height="20" width="20" alt="" style="vertical-align:middle;"></a>Markdown QuickCheck</h5>
+    &nbsp&nbsp&nbsp&nbsp <a href="/md/" target="blank"><small>--Markdown写作格式查询</small></a>
+    <p> > 这个是由T-Wind发布的中文版的实用Markdown格式查询和样例。英文版的请点这里：<a href="/md/en/" target="blank">Standard Markdown</a></p>
+    <p> > About Markdown： Markdown是一个非常高效、简洁的格式控制或者说排版的工具，是标记语言的一种，它的学习曲线非常的平缓，学习成本很低，T-Wind猜想如果国内微软的word软件盗版度不高的话，Markdown会成为国内最流行的写作、论文排版工具。</p>
+
+    <p> > 更多有关markdown的介绍可以传送至<a href="http://baike.baidu.com/view/2311114.htm">百度百科</a>/<a href="http://en.wikipedia.org/wiki/Markdown">维基百科</a>。</p>
+  </div>
+  <br>
+  <div>
+    <h5><a href="/userlist/"><img src="/img/goto.png" height="20" width="20" alt="" style="vertical-align:middle;"></a>User List</h5>
+    &nbsp&nbsp&nbsp&nbsp <a href="/userlist/"><small>--权限用户列表</small></a>
+    <p> > 新增了用户登陆系统。不再使用唯一公共账户登陆。</p>
+    <p> > 虽然密码采用“sha1”不可逆算法加密，但为了安全起见，依然<font color="red">不建议</font>大家使用自己重要的常用密码（QQ密码，银行卡密码之类）注册。</p>
+    <p> > 可登陆用户只限可发布文章的博主。不针对读者。用户注册页面只特定开放，往常关闭。</p>
+    <p> > 目前仍需要用tags标识文章作者，博主之间平行权限。是否有必要分化出独立的文章管理系统有待进一步考虑。</p>
+  </div>
+
+  <a><img src="/img/Wall-e.png" height="100" width="100" alt="" style="float:right;"></a>
+{% endblock %}

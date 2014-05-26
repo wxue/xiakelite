@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+
+{% block title %}User SignUp{% endblock %}
+
+{% block css %}
+<style>
+.errors { color:red; }
+h1{ font-size:20px; }
+</style>
+{% endblock %}
+
+{% block js %}
+<script type="text/javascript">
+function disable_btn() {
+    var btn = document.getElementById("submit");
+    btn.value = 'Please Waiting...';
+    btn.disabled = "disabled";
+}
+document.getElementById("submit").setAttribute("onclick", "setTimeout(disable_btn, 1)");
+</script>
+{% endblock %}
+
+{% block main %}
+  <h2>用户注册</h2>
+
+  {% from "_form_helpers.html" import render_field %}
+  
+  <form id="main_form" action="{{ action_url }}" method="post">
+      <p>{{ form.hidden_tag() }}</p>
+      <p>{{ render_field(form.title, placeholder="请输入用户名") }}</p>
+      <p>{{ render_field(form.content, placeholder="请设置密码") }}</p>
+      <p class="submit">{{ form.submit }}</p>
+  </form>
+{% endblock %}
