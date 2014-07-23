@@ -18,6 +18,11 @@ class ArticleForm(Form):
     is_excerpt = BooleanField()
     submit = SubmitField("Create Article")
     
+class NoteForm(Form):
+    title = TextField("Title", validators=[Required()])
+    content = TextAreaField("Content", validators=[Required()])
+    tags = TextField()
+    submit = SubmitField("Create Note")
 
 class CommentForm(Form):
     article_number = HiddenField("Article Number")

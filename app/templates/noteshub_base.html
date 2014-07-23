@@ -1,0 +1,57 @@
+<!doctype html>
+<head>
+    <meta charset="utf-8">
+    <title>XiakeLite</title>
+    <meta name="description" content="XiakeLite">
+    <meta name="author" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/css/noteshub.css" type="text/css" />
+    {% block css %}{% endblock %}
+    {% block script %}{% endblock %}
+</head>
+
+<body>
+    <div id="Top">
+    </div>
+    <div id="sidelegend" style="right: 0px; top: 10px;">
+        <a href="#Top">^Back to Top^</a>
+    </div>
+    <div class="document">
+        <div class="documentwrapper">
+            <div class="bodywrapper">
+                <div class="body">
+                    <div class="section" id="body_content">
+                        {% block main %}{% endblock %}
+                    </div>
+                </div>
+            </div>
+        </div><!-- /documentwrapper -->
+
+        <div class="sphinxsidebar">
+          <div class="sphinxsidebarwrapper">
+              <h1><a href="/">NotesHub</a></h1>
+            <p>
+              测试测试测试测试测试测试测试测试测试测试测试
+              This opinionated guide exists to provide both novice and expert Python developers a best-practice handbook to the installation, configuration, and usage of Python on a daily basis.
+            </p>
+            <h3>Notes</h3>
+          </div>
+        </div><!-- /sphinxsidebar -->
+
+        <div class="clearer"></div>        
+    </div><!-- /document -->
+
+    <footer>
+        <div class="footer">
+        © Copyright 2014 &nbsp&nbsp&nbsp 
+        <a href="http://home.xiakelite.com/noteshub/">NotesHub v0.1</a>
+        &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp 
+        Powered by 
+        <a href="https://github.com/wxue">T-Wind</a>
+        &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+        </div><!-- /footer -->
+    </footer>
+
+  {% block js %}{% endblock %}
+</body>
+</html>

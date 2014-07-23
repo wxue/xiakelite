@@ -7,10 +7,10 @@ application.
 import datetime
 
 from flask import Module, url_for, render_template, request, redirect
-from models import Article, Comment, User
-from forms import ArticleForm, SettingsForm, CommentForm, SignupForm
+from models import Article, Note, Comment, User
+from forms import ArticleForm, NoteForm, SettingsForm, CommentForm, SignupForm
 from utils import requires_auth, pygments_markdown, get_aritle_by_number, \
-    get_comments
+    get_comments, get_note_by_number
 from werkzeug.security import generate_password_hash
 
 views = Module(__name__, 'views')
@@ -60,13 +60,14 @@ def excerpt():
     articles = [x for x in articles if x.is_public and x.is_excerpt]
     return render_template('excerpt.html', articles=articles)
 
-@views.route('/lab/entrance/')
-def lab_entrance():
-    return render_template('lab_entrance.html')
+@views.route('/note/')
+def note():
+    notes = Note.all().order('-added')
+    return render_template('note.html', notes=notes)
 
-@views.route('/lab/')
-def lab():
-    return render_template('lab.html')
+@views.route('/noteshub/')
+def noteshub():
+    return render_template('noteshub.html')
 
 @views.route('/feed.atom')
 def feed():
@@ -126,7 +127,16 @@ def get_aritle(number):
         latestmarker=latestmarker,
     )
 
-
+@views.route(r'/note/<int:number>/', methods=["POST", "GET"])
+def get_note(number):    
+    note = get_note_by_number(number)
+    if note is None:
+        return render_template('404.html'), 404
+    
+    return render_template(
+        'note.html',
+        note=note,
+    )
    
 @views.route(r'/p/<number>/')
 @requires_auth
@@ -181,6 +191,30 @@ def add_article():
             return redirect(article.get_absolute_url())
     action_url = url_for('add_article')
     return render_template('add_article.html', form=form, action_url=action_url)
+
+@views.route('/ntadd/', methods=["POST", "GET"])
+@requires_auth
+def add_note():
+    """Add a note."""
+    form = ArticleForm()
+    if request.method == 'POST':
+        if form.validate_on_submit():
+            # Get the right number - the article ID
+            number = 1
+            notes = Note.all().order('-number')
+            if notes.count() > 0:
+                number = notes[0].number + 1
+
+            note = Note(
+                number=number,
+                title=form.title.data,
+                content=form.content.data,
+                tags=form.tags.data,
+            )
+            note.save()
+            return redirect(note.get_absolute_url())
+    action_url = url_for('add_note')
+    return render_template('add_note.html', form=form, action_url=action_url)
 
 # @views.route('/signup/', methods=["POST", "GET"])
 # def signup():
@@ -239,6 +273,29 @@ def edit_article(number):
     action_url = url_for('edit_article', number=number)
     return render_template('add_article.html', form=form, action_url=action_url)
 
+@views.route('/ntedit/<int:number>/', methods=["POST", "GET"])
+@requires_auth
+def edit_note(number):
+    """Edit a note."""
+    note = get_note_by_number(number)
+    if note is None:
+        return render_template('404.html'), 404
+
+    form = NoteForm(
+        title=note.title,
+        content=note.content,
+        tags=note.tags,
+    )
+    if request.method == 'POST':
+        if form.validate_on_submit():
+            note.title = form.title.data
+            note.content = form.content.data
+            note.tags = form.tags.data
+            note.save()
+            return redirect(note.get_absolute_url())
+    action_url = url_for('edit_note', number=number)
+    return render_template('add_note.html', form=form, action_url=action_url)
+
 
 @views.route('/edit/')
 @requires_auth
@@ -246,6 +303,13 @@ def edit_list():
     """Render website's index page."""
     articles = Article.all().order('-added')
     return render_template('edit_list.html', articles=articles)
+
+@views.route('/ntedit/')
+@requires_auth
+def ntedit_list():
+    """Render website's index page."""
+    notes = Note.all().order('-added')
+    return render_template('ntedit_list.html', notes=notes)
 
 @views.route('/md/')
 def markdown_cn():

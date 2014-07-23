@@ -1,0 +1,20 @@
+{% extends "noteshub_base.html" %}
+
+{% block title %}Edit Notes{% endblock %}
+{% block css %}
+<style>
+a.note {color:#333333;}
+</style>
+{% endblock %}
+
+{% block main %}
+<h1>Edit Notes</h1>
+
+{% for note in notes %}
+    <p>
+      <a class="note" href="{{ note.get_absolute_url() }}">{{ note.title|title }}</a>
+      <a href="{{ note.get_edit_url() }}">Edit</a>
+    </p>
+{% endfor %}
+
+{% endblock %}

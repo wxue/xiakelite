@@ -6,7 +6,7 @@ import settings
 from flask import Response, request
 from functools import wraps
 from libs.BeautifulSoup import BeautifulSoup
-from models import Article, Comment, User
+from models import Article, Note, Comment, User
 from pygments import lexers, formatters, highlight
 from werkzeug.security import check_password_hash
 
@@ -91,6 +91,13 @@ def get_aritle_by_number(number):
     if articles.count() == 0:
         return None
     return articles[0]
+
+def get_note_by_number(number):
+    notes = Note.all()
+    notes = notes.filter('number ==', int(number))
+    if notes.count() == 0:
+        return None
+    return notes[0]
 
 
 def get_comments(number):

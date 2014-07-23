@@ -1,0 +1,21 @@
+{% extends "noteshub_base.html" %}
+
+{% block title %}{% endblock %}
+
+{% block main %}
+
+<div>
+  <h2>Notes &nbsp&nbsp
+    <a href="/feed.atom" target="_blank"><img src="/img/rss32.png" alt="" style="vertical-align:middle;">
+    </a>
+  </h2>
+  <small>原创&博文</small>
+  <br><br>
+
+  {% for note in notes %}
+    <h6><a href="{{ note.get_absolute_url() }}">{{ note.title }}</a></h6>
+    &nbsp&nbsp&nbsp {% if note.tags %}Tags: {{ note.tags|link_tags|safe }}{% endif %}
+  {% endfor %}
+</div>
+<br>
+{% endblock %}

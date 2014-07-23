@@ -23,6 +23,18 @@ class Article(db.Model):
     def get_edit_url(self):
         return "/edit/%s/" % self.number
 
+class Note(db.Model):
+    number = db.IntegerProperty(required=True)
+    title = db.StringProperty(required=True)
+    content = db.TextProperty(required=True)
+    added = db.DateTimeProperty(auto_now_add=True)
+    tags = db.StringProperty()
+
+    def get_absolute_url(self):
+        return "/note/%s/" % self.number
+
+    def get_edit_url(self):
+        return "/ntedit/%s/" % self.number
 
 class Comment(db.Model):
     article_number = db.IntegerProperty(required=True)
@@ -36,7 +48,4 @@ class User(db.Model):
     title = db.StringProperty(required=True)
     content = db.StringProperty(required=True)
     added = db.DateTimeProperty(auto_now_add=True)
-
-# class User(db.Model):
-#     user = db.StringProperty(required=True)
-#     password = db.StringProperty(required=True)
+    
