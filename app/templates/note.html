@@ -9,11 +9,11 @@
     <a href="/ntfeed.atom" target="_blank"><img src="/img/rss32.png" alt="" style="vertical-align:middle;">
     </a>
   </h2>
-  <small>原创&博文</small>
+  <small>Read the world, let the world read.</small>
   <br><br>
 
   {% for note in notes %}
-    <h6><a href="{{ note.get_absolute_url() }}">{{ note.title }}</a></h6>
+    <h6>{{ note.number }}. <a href="{{ note.get_absolute_url() }}">{{ note.title }}</a></h6>
     &nbsp&nbsp&nbsp {% if note.tags %}Tags: {{ note.tags|link_tags|safe }}{% endif %}
   {% endfor %}
 </div>
