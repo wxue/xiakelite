@@ -8,6 +8,8 @@ Lots of changes and debugs have been made, and I am still working on it.
 
 #### Versions Time Line
 
+>  Version 1.1 (Deployed: 2014-7-23)
+
 >  Version 1.0 (Deployed: 2014-3-30)
 
 >  Version 0.9 (Deployed: 2013-8-25)
