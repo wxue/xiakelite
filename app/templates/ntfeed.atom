@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title>Notes From XiakeLite/Noteshub</title>
+  <link href="http://home.xiakelite.com/noteshub"/>
+  <updated>2014-07-23T17:30:00Z</updated>
+  <author>
+    <name>T-Wind</name>
+  </author>
+  <id>http://home.xiakelite.com/noteshub</id>
+
+{% for note in notes %}
+  <entry>
+    <title>{{ note.title }}</title>
+    <link href="http://home.xiakelite.com/note/{{ note.number }}"/>
+    <id>http://home.xiakelite.com/note/{{ note.number }}</id>
+    <updated>{{ note.added }}</updated>
+    <summary> Tags:{{ note.tags }} </summary>
+  </entry>
+{% endfor %}
+</feed>

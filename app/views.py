@@ -75,6 +75,11 @@ def feed():
     articles = [x for x in articles if x.is_public]
     return render_template('feed.atom', articles=articles)
 
+@views.route('/ntfeed.atom')
+def ntfeed():
+    notes = Note.all().order('-added')
+    return render_template('ntfeed.atom', notes=notes)
+
 @views.route(r'/ajax/markdown/', methods=["POST",])
 def ajax_markdown():
     text = request.form.get('text')
