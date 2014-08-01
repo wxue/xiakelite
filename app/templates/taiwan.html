@@ -1,0 +1,838 @@
+
+<!DOCTYPE html><html><head><meta charset="utf-8"><style>body
+{
+  font-size:15px;
+  line-height:1.7;
+  overflow-x:hidden;
+
+    background-color: white;
+    border-radius: 3px;
+    border: 3px solid #EEE;
+    box-shadow: inset 0 0 0 1px #CECECE;
+    font-family: Helvetica, arial, freesans, clean, sans-serif;
+    max-width: 912px;
+    padding: 30px;
+    margin: 2em auto;
+
+    color:#333333;
+}
+
+
+.body-classic{
+  color:#444;
+  font-family:Georgia, Palatino, 'Palatino Linotype', Times, 'Times New Roman', "Hiragino Sans GB", "STXihei", "微软雅黑", serif;
+  font-size:16px;
+  line-height:1.5em;
+  background:#fefefe;
+  width: 45em;
+  margin: 10px auto;
+  padding: 1em;
+  outline: 1300px solid #FAFAFA;
+}
+
+body>:first-child
+{
+  margin-top:0!important;
+}
+
+body>:last-child
+{
+  margin-bottom:0!important;
+}
+
+blockquote,dl,ol,p,pre,table,ul {
+  border: 0;
+  margin: 15px 0;
+  padding: 0;
+}
+
+body a {
+  color: #4183c4;
+  text-decoration: none;
+}
+
+body a:hover {
+  text-decoration: underline;
+}
+
+body a.absent
+{
+  color:#c00;
+}
+
+body a.anchor
+{
+  display:block;
+  padding-left:30px;
+  margin-left:-30px;
+  cursor:pointer;
+  position:absolute;
+  top:0;
+  left:0;
+  bottom:0
+}
+
+/*h4,h5,h6{ font-weight: bold; }*/
+
+.octicon{
+  font:normal normal 16px sans-serif;
+  width: 1em;
+  height: 1em;
+  line-height:1;
+  display:inline-block;
+  text-decoration:none;
+  -webkit-font-smoothing:antialiased
+}
+
+.octicon-link {
+  background: url("data:image/svg+xml;utf8,<?xml version='1.0' standalone='no'?> <!DOCTYPE svg PUBLIC '-//W3C//DTD SVG 1.1//EN' 'http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd'> <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1024 832'> <metadata>Copyright (C) 2013 by GitHub</metadata> <!-- scale(0.01565557729941) --> <path transform='' d='M768 64h-192s-254 0-256 256c0 22 3 43 8 64h137c-11-19-18-41-18-64 0-128 128-128 128-128h192s128 0 128 128-128 128-128 128 0 64-64 128h64s256 0 256-256-256-256-256-256z m-72 192h-137c11 19 18 41 18 64 0 128-128 128-128 128h-192s-128 0-128-128 128-128 128-128-4-65 66-128h-66s-256 0-256 256 256 256 256 256h192s256 0 256-256c0-22-4-44-8-64z'/> </svg>");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: bottom;
+}
+
+.octicon-link:before{
+  content:'\a0';
+}
+
+body h1,body h2,body h3,body h4,body h5,body h6{
+  margin:1em 0 15px;
+  padding:0;
+  font-weight:bold;
+  line-height:1.7;
+  cursor:text;
+  position:relative
+}
+
+body h1 .octicon-link,body h2 .octicon-link,body h3 .octicon-link,body h4 .octicon-link,body h5 .octicon-link,body h6 .octicon-link{
+  display:none;
+  color:#000
+}
+
+body h1:hover a.anchor,body h2:hover a.anchor,body h3:hover a.anchor,body h4:hover a.anchor,body h5:hover a.anchor,body h6:hover a.anchor{
+  text-decoration:none;
+  line-height:1;
+  padding-left:0;
+  margin-left:-22px;
+  top:15%
+}
+
+body h1:hover a.anchor .octicon-link,body h2:hover a.anchor .octicon-link,body h3:hover a.anchor .octicon-link,body h4:hover a.anchor .octicon-link,body h5:hover a.anchor .octicon-link,body h6:hover a.anchor .octicon-link{
+  display:inline-block
+}
+
+body h1 tt,body h1 code,body h2 tt,body h2 code,body h3 tt,body h3 code,body h4 tt,body h4 code,body h5 tt,body h5 code,body h6 tt,body h6 code{
+  font-size:inherit
+}
+
+body h1{
+  font-size:2.5em;
+  border-bottom:1px solid #ddd
+}
+
+body h2{
+  font-size:2em;
+  border-bottom:1px solid #eee
+}
+
+body h3{
+  font-size:1.5em
+}
+
+body h4{
+  font-size:1.2em
+}
+
+body h5{
+  font-size:1em
+}
+
+body h6{
+  color:#777;
+  font-size:1em
+}
+
+body p,body blockquote,body ul,body ol,body dl,body table,body pre{
+  margin:15px 0
+}
+
+body h1 tt,body h1 code,body h2 tt,body h2 code,body h3 tt,body h3 code,body h4 tt,body h4 code,body h5 tt,body h5 code,body h6 tt,body h6 code
+{
+  font-size:inherit;
+}
+
+
+body hr
+{
+  background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAYAAAAECAYAAACtBE5DAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyJpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNSBNYWNpbnRvc2giIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6OENDRjNBN0E2NTZBMTFFMEI3QjRBODM4NzJDMjlGNDgiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6OENDRjNBN0I2NTZBMTFFMEI3QjRBODM4NzJDMjlGNDgiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDo4Q0NGM0E3ODY1NkExMUUwQjdCNEE4Mzg3MkMyOUY0OCIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDo4Q0NGM0E3OTY1NkExMUUwQjdCNEE4Mzg3MkMyOUY0OCIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PqqezsUAAAAfSURBVHjaYmRABcYwBiM2QSA4y4hNEKYDQxAEAAIMAHNGAzhkPOlYAAAAAElFTkSuQmCC);
+  background-repeat: repeat-x;
+  /*background:transparent url(http://overblown.net/files/markdown/dirty-shade.png) repeat-x 0 0;*/
+  background-color: transparent;
+  background-position: 0;
+  border:0 none;
+  color:#ccc;
+  height:4px;
+  margin:15px 0;
+  padding:0;
+}
+
+body li p.first
+{
+  display:inline-block;
+}
+
+body ul,body ol
+{
+  padding-left:30px;
+}
+
+body ul.no-list,body ol.no-list
+{
+  list-style-type:none;
+  padding:0;
+}
+
+body ul ul,body ul ol,body ol ol,body ol ul
+{
+  margin-bottom:0;
+  margin-top:0;
+}
+
+body dl
+{
+  padding:0;
+}
+
+body dl dt
+{
+  font-size:14px;
+  font-style:italic;
+  font-weight:700;
+  margin-top:15px;
+  padding:0;
+}
+
+body dl dd
+{
+  margin-bottom:15px;
+  padding:0 15px;
+}
+
+body blockquote
+{
+  border-left:4px solid #DDD;
+  color:#777;
+  padding:0 15px;
+}
+
+body blockquote>:first-child
+{
+  margin-top:0;
+}
+
+body blockquote>:last-child
+{
+  margin-bottom:0;
+}
+
+body table
+{
+  display:block;
+  overflow:auto;
+  width:100%;
+  border-collapse: collapse;
+  border-spacing: 0;
+  padding: 0;
+}
+
+body table th
+{
+  font-weight:700;
+}
+
+body table th,body table td
+{
+  border:1px solid #ddd;
+  padding:6px 13px;
+}
+
+body table tr
+{
+  background-color:#fff;
+  border-top:1px solid #ccc;
+}
+
+body table tr:nth-child(2n)
+{
+  background-color:#f8f8f8;
+}
+
+body img
+{
+  -moz-box-sizing:border-box;
+  box-sizing:border-box;
+  max-width:100%;
+}
+
+body span.frame
+{
+  display:block;
+  overflow:hidden;
+}
+
+body span.frame>span
+{
+  border:1px solid #ddd;
+  display:block;
+  float:left;
+  margin:13px 0 0;
+  overflow:hidden;
+  padding:7px;
+  width:auto;
+}
+
+body span.frame span img
+{
+  display:block;
+  float:left;
+}
+
+body span.frame span span
+{
+  clear:both;
+  color:#333;
+  display:block;
+  padding:5px 0 0;
+}
+
+body span.align-center
+{
+  clear:both;
+  display:block;
+  overflow:hidden;
+}
+
+body span.align-center>span
+{
+  display:block;
+  margin:13px auto 0;
+  overflow:hidden;
+  text-align:center;
+}
+
+body span.align-center span img
+{
+  margin:0 auto;
+  text-align:center;
+}
+
+body span.align-right
+{
+  clear:both;
+  display:block;
+  overflow:hidden;
+}
+
+body span.align-right>span
+{
+  display:block;
+  margin:13px 0 0;
+  overflow:hidden;
+  text-align:right;
+}
+
+body span.align-right span img
+{
+  margin:0;
+  text-align:right;
+}
+
+body span.float-left
+{
+  display:block;
+  float:left;
+  margin-right:13px;
+  overflow:hidden;
+}
+
+body span.float-left span
+{
+  margin:13px 0 0;
+}
+
+body span.float-right
+{
+  display:block;
+  float:right;
+  margin-left:13px;
+  overflow:hidden;
+}
+
+body span.float-right>span
+{
+  display:block;
+  margin:13px auto 0;
+  overflow:hidden;
+  text-align:right;
+}
+
+body code,body tt
+{
+  background-color:#f8f8f8;
+  border:1px solid #ddd;
+  border-radius:3px;
+  margin:0 2px;
+  padding:0 5px;
+}
+
+body code
+{
+  white-space:nowrap;
+}
+
+
+code,pre{
+  font-family:Consolas, "Liberation Mono", Courier, monospace;
+  font-size:12px
+}
+
+body pre>code
+{
+  background:transparent;
+  border:none;
+  margin:0;
+  padding:0;
+  white-space:pre;
+}
+
+body .highlight pre,body pre
+{
+  background-color:#f8f8f8;
+  border:1px solid #ddd;
+  font-size:13px;
+  line-height:19px;
+  overflow:auto;
+  padding:6px 10px;
+  border-radius:3px
+}
+
+body pre code,body pre tt
+{
+  background-color:transparent;
+  border:none;
+  margin:0;
+  padding:0;
+}
+
+body .task-list{
+  list-style-type:none;
+  padding-left:10px
+}
+
+.task-list-item{
+  padding-left:20px
+}
+
+.task-list-item label{
+  font-weight:normal
+}
+
+.task-list-item.enabled label{
+  cursor:pointer
+}
+
+.task-list-item+.task-list-item{
+  margin-top:5px
+}
+
+.task-list-item-checkbox{
+  float:left;
+  margin-left:-20px;
+  margin-top:7px
+}
+
+
+.highlight{
+  background:#ffffff
+}
+
+.highlight .c{
+  color:#999988;
+  font-style:italic
+}
+
+.highlight .err{
+  color:#a61717;
+  background-color:#e3d2d2
+}
+
+.highlight .k{
+  font-weight:bold
+}
+
+.highlight .o{
+  font-weight:bold
+}
+
+.highlight .cm{
+  color:#999988;
+  font-style:italic
+}
+
+.highlight .cp{
+  color:#999999;
+  font-weight:bold
+}
+
+.highlight .c1{
+  color:#999988;
+  font-style:italic
+}
+
+.highlight .cs{
+  color:#999999;
+  font-weight:bold;
+  font-style:italic
+}
+
+.highlight .gd{
+  color:#000000;
+  background-color:#ffdddd
+}
+
+.highlight .gd .x{
+  color:#000000;
+  background-color:#ffaaaa
+}
+
+.highlight .ge{
+  font-style:italic
+}
+
+.highlight .gr{
+  color:#aa0000
+}
+
+.highlight .gh{
+  color:#999999
+}
+
+.highlight .gi{
+  color:#000000;
+  background-color:#ddffdd
+}
+
+.highlight .gi .x{
+  color:#000000;
+  background-color:#aaffaa
+}
+
+.highlight .go{
+  color:#888888
+}
+
+.highlight .gp{
+  color:#555555
+}
+
+.highlight .gs{
+  font-weight:bold
+}
+
+.highlight .gu{
+  color:#800080;
+  font-weight:bold
+}
+
+.highlight .gt{
+  color:#aa0000
+}
+
+.highlight .kc{
+  font-weight:bold
+}
+
+.highlight .kd{
+  font-weight:bold
+}
+
+.highlight .kn{
+  font-weight:bold
+}
+
+.highlight .kp{
+  font-weight:bold
+}
+
+.highlight .kr{
+  font-weight:bold
+}
+
+.highlight .kt{
+  color:#445588;
+  font-weight:bold
+}
+
+.highlight .m{
+  color:#009999
+}
+
+.highlight .s{
+  color:#d14
+}
+
+.highlight .n{
+  color:#333333
+}
+
+.highlight .na{
+  color:#008080
+}
+
+.highlight .nb{
+  color:#0086B3
+}
+
+.highlight .nc{
+  color:#445588;
+  font-weight:bold
+}
+
+.highlight .no{
+  color:#008080
+}
+
+.highlight .ni{
+  color:#800080
+}
+
+.highlight .ne{
+  color:#990000;
+  font-weight:bold
+}
+
+.highlight .nf{
+  color:#990000;
+  font-weight:bold
+}
+
+.highlight .nn{
+  color:#555555
+}
+
+.highlight .nt{
+  color:#000080
+}
+
+.highlight .nv{
+  color:#008080
+}
+
+.highlight .ow{
+  font-weight:bold
+}
+
+.highlight .w{
+  color:#bbbbbb
+}
+
+.highlight .mf{
+  color:#009999
+}
+
+.highlight .mh{
+  color:#009999
+}
+
+.highlight .mi{
+  color:#009999
+}
+
+.highlight .mo{
+  color:#009999
+}
+
+.highlight .sb{
+  color:#d14
+}
+
+.highlight .sc{
+  color:#d14
+}
+
+.highlight .sd{
+  color:#d14
+}
+
+.highlight .s2{
+  color:#d14
+}
+
+.highlight .se{
+  color:#d14
+}
+
+.highlight .sh{
+  color:#d14
+}
+
+.highlight .si{
+  color:#d14
+}
+
+.highlight .sx{
+  color:#d14
+}
+
+.highlight .sr{
+  color:#009926
+}
+
+.highlight .s1{
+  color:#d14
+}
+
+.highlight .ss{
+  color:#990073
+}
+
+.highlight .bp{
+  color:#999999
+}
+
+.highlight .vc{
+  color:#008080
+}
+
+.highlight .vg{
+  color:#008080
+}
+
+.highlight .vi{
+  color:#008080
+}
+
+.highlight .il{
+  color:#009999
+}
+
+.highlight .gc{
+  color:#999;
+  background-color:#EAF2F5
+}
+
+.type-csharp .highlight .k{
+  color:#0000FF
+}
+
+.type-csharp .highlight .kt{
+  color:#0000FF
+}
+
+.type-csharp .highlight .nf{
+  color:#000000;
+  font-weight:normal
+}
+
+.type-csharp .highlight .nc{
+  color:#2B91AF
+}
+
+.type-csharp .highlight .nn{
+  color:#000000
+}
+
+.type-csharp .highlight .s{
+  color:#A31515
+}
+
+.type-csharp .highlight .sc{
+  color:#A31515
+}
+</style><title>tw</title></head><body><h1>
+<a name="user-content-%E5%8F%B0%E6%B9%BE%E7%9B%B8%E5%85%B3%E4%BF%A1%E6%81%AF%E6%B1%87%E6%80%BB" class="anchor" href="#%E5%8F%B0%E6%B9%BE%E7%9B%B8%E5%85%B3%E4%BF%A1%E6%81%AF%E6%B1%87%E6%80%BB" aria-hidden="true"><span class="octicon octicon-link"></span></a>台湾相关信息汇总</h1>
+
+<p>一下内容搜集自网络，均是从云林科技大的学生或者大陆过去的交换生的一些文章或者答疑中打散分类整理出来。有些观点会有不一致的地方，可以自行考量。祝Qing在台湾学习生活愉快~ 也顺祝同行的两位小伙伴一切顺利~</p>
+
+<p>感谢所有网上提供信息和分享经验的网友。</p>
+
+<h4>
+<a name="user-content-%E8%AF%AD%E8%A8%80" class="anchor" href="#%E8%AF%AD%E8%A8%80" aria-hidden="true"><span class="octicon octicon-link"></span></a>语言</h4>
+
+<ul>
+<li><p>还不会写繁体字没关系，老师不会因为你写简体字就乱扣分什么的。但平时看着看着多个心眼，慢慢也就会了，尽可能写吧。
+提到台湾国语普遍想的是台湾腔，腔调是一方面，很多表达方式或者外来物的翻译也不一样，这个慢慢积累吧，才不至于有时候不知所云，有些讲法挺有趣的。闽南语在台北不会完全不影响沟通，听说中南部很多只讲台语，福建的同学有语言优势了。</p></li>
+<li><p>至于繁体，你可以先打简体，再切换繁体呀</p></li>
+</ul><h4>
+<a name="user-content-%E8%A1%8C%E6%9D%8E" class="anchor" href="#%E8%A1%8C%E6%9D%8E" aria-hidden="true"><span class="octicon octicon-link"></span></a>行李</h4>
+
+<ul>
+<li><p>衣服可以少带，你可以买这里的衣服 很朝，在50％，net，都是很好的店</p></li>
+<li><p>身份证不用带，你有大陆通行正就行了（注：嘿嘿，我建议还是带上，又不累）</p></li>
+<li><p>转换接头可以多买几个，这边如果要买转换接头的话，一来要找，二来比较贵。还是买好了直接过来方便。个人建议买两个差不多，一个的话如果笔记本要带出去，那转换接头也得带来带去，麻烦点。</p></li>
+<li><p>笔电个人建议可以买好再过来。一来不是每个学校附近都找得到比较正规比较大的3C店；二来刚来学校辅导、迎新，其实日程排得也不是很松，没那么多时间逛；三来人生地不熟的，一时汇率也算不过来，贵不贵心里也没谱，很多也是made in China。</p></li>
+<li><p>过来别带太多东西，尤其不需要带旅游书</p></li>
+<li><p>行李超重可能多缴钱是一方面，提来提去也辛苦，另外虽说一待就是一学期，但很多东西就地买反而方便。台湾确实适合旅游，好山好水好吃好玩，而且很多景点不要门票，但交通费跟北京比就贵了去了。过来不要带旅游书（估计本来也没想着要带吧...）学校啊，旅游观光局啊，游客服务中心啊，都有很多免费的旅游指南。</p></li>
+</ul><h4>
+<a name="user-content-%E7%94%9F%E6%B4%BB%E7%94%A8%E5%93%81" class="anchor" href="#%E7%94%9F%E6%B4%BB%E7%94%A8%E5%93%81" aria-hidden="true"><span class="octicon octicon-link"></span></a>生活用品</h4>
+
+<ul>
+<li><p>充电还好吧，110V可以用，就是慢了点，比如我们用吹风机，实在不敢恭维，真心慢，你的笔电什么的都可以带来，这里的插头和大陆不一样，不过，你可以来了再买转换器，去全国电子，什么都有。</p></li>
+<li><p>钱肯定要准备好，手机当然要必备，不过，大陆手机卡可以不用带了 除非你办漫游，我办了，真心贵，长途电话1.99元一分钟，短信0.99 一条（注：Qing，你的红色HTC在台湾等着你呢）</p></li>
+<li><p>宿舍的话被子他会租给你。牙膏毛巾洗发水什么的都要自己买，去到学校买就好。宿舍条件还不错的，有的宿舍有空调像研究生那种。洗刷间就在宿舍旁边可以洗澡很方便。四人上床下桌那种。</p></li>
+</ul><h4>
+<a name="user-content-%E9%93%B6%E8%A1%8C%E8%B4%A7%E5%B8%81" class="anchor" href="#%E9%93%B6%E8%A1%8C%E8%B4%A7%E5%B8%81" aria-hidden="true"><span class="octicon octicon-link"></span></a>银行、货币</h4>
+
+<ul>
+<li>办理华夏的可以的，好像办理华夏的最好。只要是62开头的那种银联卡都可以用。兑换台币的话你可以在大陆去中国银行兑换一些，也可以不用。直接下飞机在机场兑换也OK的。</li>
+</ul><h4>
+<a name="user-content-%E5%9C%B0%E7%90%86%E4%BA%A4%E9%80%9A%E7%8E%AF%E5%A2%83" class="anchor" href="#%E5%9C%B0%E7%90%86%E4%BA%A4%E9%80%9A%E7%8E%AF%E5%A2%83" aria-hidden="true"><span class="octicon octicon-link"></span></a>地理、交通环境</h4>
+
+<ul>
+<li><p>斗六因为在中部，并不繁华，主要以农业为主，但是，因为台湾总的来说生活水平还不错，所以，斗六只是相对于台北这种一线城市差点，基本上还不错，虽然没有大型商圈，但是百货应有尽有，很方便。至于出去游玩，非常方便，台湾的铁路交通是最便捷的，纵贯南北。</p></li>
+<li><p>学校是有人接机的，到暑假的时候会邮件给你，之前应该有让你填表吧，一个是关于接机的，貌似500台币，一个是体检的，1000台币。如果申请了，就有人接，没，那出机场后询问当地人，它有大巴车直接去斗六，找日统客运，大概450台币的样子。</p></li>
+<li><p>你可以搜百度呀～什么都很清楚～我在这里也说不全。。。建议你来台之后多去大城市走走 高雄台北是一定要去的～花莲 垦丁 。。。本人觉得 日月潭 阿里山那些地方其实也就那样，多去大城市走走，感受台湾的新文化。</p></li>
+</ul><h4>
+<a name="user-content-%E4%BA%BA%E6%96%87%E7%8E%AF%E5%A2%83" class="anchor" href="#%E4%BA%BA%E6%96%87%E7%8E%AF%E5%A2%83" aria-hidden="true"><span class="octicon octicon-link"></span></a>人文环境</h4>
+
+<ul>
+<li>云科是国立的，在台湾所有科技大学里排行前几呢，很有实力的，台湾和大陆不一样，如果你高中是职业类学校，那就报考科技类大学，其实没有差啦，他们的入学考试还是很难的，学生质量还是很高的。至于你说的流氓，我想说，本人从来都未遇到过，这里风气很好，人们素质很高的。</li>
+</ul><h4>
+<a name="user-content-%E5%AD%A6%E6%A0%A1%E7%94%9F%E6%B4%BB" class="anchor" href="#%E5%AD%A6%E6%A0%A1%E7%94%9F%E6%B4%BB" aria-hidden="true"><span class="octicon octicon-link"></span></a>学校生活</h4>
+
+<ul>
+<li><p>上课时间一般都是上午9点到11点。下午2点到5点。晚上跟周六日一般不上课。按照自己选的课上就行了。一般都是一星期上一节课。</p></li>
+<li><p>你们当时选课的时候云科会给你们一份文件吧，关于选课的。</p></li>
+<li><p>课表。登陆云科大主页，点击单一入口，倘若你是新生，应该进不去，必须要有学号和密码，如果你是未来的学生，先不要急着选课啦，到时候学校会给你充分的时间去选择，没选上的课也可以找老师签单，老师都好好的</p></li>
+<li><p>学校覆盖无线网，但有的宿舍稍微差点。教学楼信号好。免费用。宿舍上网绑定电脑ip就好，会教你的。每天免费3G，超出会暂封的。网速很快。手机卡的话20岁以上拿着证件去中华电信或者直接小seven去办就行。</p></li>
+<li><p>学校對面有一個夜市每個星期六開 </p></li>
+<li><p>去古坑喝咖啡也很近</p></li>
+</ul><h2>
+<a name="user-content-%E7%9B%B8%E5%85%B3%E8%B5%84%E6%96%99%E4%B8%8B%E8%BD%BD" class="anchor" href="#%E7%9B%B8%E5%85%B3%E8%B5%84%E6%96%99%E4%B8%8B%E8%BD%BD" aria-hidden="true"><span class="octicon octicon-link"></span></a>相关资料下载</h2>
+
+<ul>
+<li>这个是个非常不错的指南，可以下载下来备用，或者没事看看对台湾有个初步的了解。<a href="http://bw.businessweekly.com.tw/event/2009/rdec/download/book_ch.pdf">在台湾的生活指南-下载</a>
+</li>
+</ul><h2>
+<a name="user-content-%E7%BD%91%E5%8F%8B%E7%95%99%E5%AD%A6%E5%BF%83%E5%BE%97%E6%96%87%E7%AB%A0%E6%8E%A8%E8%8D%90" class="anchor" href="#%E7%BD%91%E5%8F%8B%E7%95%99%E5%AD%A6%E5%BF%83%E5%BE%97%E6%96%87%E7%AB%A0%E6%8E%A8%E8%8D%90" aria-hidden="true"><span class="octicon octicon-link"></span></a>网友留学心得文章推荐</h2>
+
+<blockquote>
+<p>原文地址：<a href="http://tc.buu.edu.cn/guojijiaoliuyuhezuo/jiaoliuhezuo/chengguoganwu/2012-07-03/417.html">http://tc.buu.edu.cn/guojijiaoliuyuhezuo/jiaoliuhezuo/chengguoganwu/2012-07-03/417.html</a></p>
+</blockquote>
+
+<p>短暂的赴台交流学习结束了，虽然我们的交流学习时间只有一个学期，但却开阔了我的眼界，培养了我的自立能力，也让我对台湾有了更加深刻更加正确的认识，也提供给我一些对人生新的看法。这次的台湾之行给我留下了许多美好的回忆，台湾的生活给了我不一样的体验，也带给我更多的人生体悟，这会成为我生命中重要的一笔。</p>
+
+<p>关于校园。出了桃园机场，我第一个去的地方就是我日后在此生活了一个学期的云科大。我迫不及待的拿着相机在云科大里走了一圈，我感觉它更像一个街心公园。校园里有三三两两散步的居民，有拍婚纱照的情侣，云梦湖里的鸭子在戏水，还有刚刚盛开过的荷花。各个系所的教学主楼里也都有各自系所的特色，应用外语系的系所有小桥，有溪流，镂空的玻璃桌子营造出一种小资的情调；文化资产管理系的教学楼里则是陈列着一些古旧的摆设，连休息的椅子也是古典的风格，门口还有一棵垂满了藤枝的大树，营造出一种神秘感；而艺术设计系的大楼外观本就与别的系所不同，大楼里面更是处都有同学们的艺术创作，墙上贴满了同学们的画作，营造出一种无处不艺术的感觉。而学校里的图书馆更是让人走进去就不想出来。图书馆一共九层，藏书之多自不必说，环境也相当不错。除了公共的自习区之外，同学还可以三两一组去租研究小屋，这样学习起来可能更能让人觉得舒服，即使是一个人，也可以租个人研究室，关上门，就是自己的世界，保证不会偷懒。甚至，在图书馆的一些楼层，还会有沙发供同学们阅读之用，在这样的环境下阅读，想读不进去都难。</p>
+
+<p>关于同学。去之前我本来是有点担心这个问题的，但是从我第一天去就受到了大家的照顾。大家都很友好的对待我们，告诉我们各种事情，还带着我们去办理电话卡，办理各种交换生需要办理的手续。没开学之前，还带着我们去各个地方玩，让我们了解台湾的风土民情。开学以后，我更是感受到了台湾同学的热情。在老师要求分组讨论、报告的时候，我很怕会融入不进去，但是台湾的同学都很照顾我，都会主动让我加入进去，课余时间，他们还会邀请我们一起去聚餐，一起出游，这让我之前的顾虑完全消失了，他们的态度让我觉得很温暖。这也是很让我难忘的一点。</p>
+
+<p>关于学习。我去的是云林科技大学，它是一所技职类的大学。很多考入这所学校的学生都是在高中就已经开始学习他们进入大学后选报的专业，所以基础都很好，所以对于我们来说，这些课程就比较困难。这是与大陆的学校不太一样的地方。在大陆，如果高中上的是技职类的学校，那很少有能考上大学的，许多人都认为在职高学不到什么东西。但是在台湾，类似与大陆职高的学校里，是真的可以学习到许多东西的，而且还可以考很好的大学，因为在台湾上职高学校的学生，家里可能是比较困难的，所以可能同学会更用心去学习。所以升入大学以后，担心跟不上课程的并不是这些职高出来的同学，而是普通高中出来的同学。</p>
+
+<p>面对有些难度的课业，开始我很紧张，尤其是我在北京是学习汉语言文学专业的，但是我在台湾的专业是应用外语，所以免不了有英语授课的课程。对于这类课程，我是最害怕的，但是同学们都很友好，也很照顾我。跟我一起修习这门课的还有另外几个大陆交换生，我上课有什么听不懂的，笔记跟不上的，都会找他们帮忙，他们也很热心的帮助我，并且成为了很要好的朋友。在台湾学习生活中，给我印象最深的一门课就是语言与文化。它虽然跟我的专业很吻合，但却是全英文授课。这对我来说是个极大的挑战。期中考试的试卷全是用英文出的，答案也要用英文回答，虽然老师事先给好了范围，但对我来说还是很困难，因为有的英文我并不能完全理解它的意思，只能生背。考试之前，我格外紧张，拼命的把复习资料背来背去，考试结果出来以后，我居然得了八十多分，我的努力得到了认可，我真正明白了什么叫一分耕耘一分收获。还有学期最后的分组报告，也要用英文来作报告。由于大家那一阵子都忙着期末考试，所以做ppt的任务就落在了我的身上，我按照我们之前写的报告进行删减、整合，对于不会的英文查字典、问同学，当ppt真的完成是我觉得特别有成就感。到了要上台报告的一周，我把我自己要报告的部分写好了讲稿，每一字每一句都要找学习英语专业的同学帮我查看推敲，看是否有不和语法的地方。在他们检查过没有问题以后，我反复的在宿舍进行练习，力求做到不出现什么瑕疵，让整体报告看起来自然顺畅。到了真正上台报告的时候，我努力平复自己的紧张情绪，我的报告得到了大家热烈的掌声，就连跟我同组的同学也说我的发音非常好听，还开玩笑说早知道就应该早点让我报告。大家的鼓励是对我的付出最大的认可。虽然这门课程对我来说很难，但我却觉得这是对自己的一次挑战。不管是老师还是同学，都给予了我很大的帮助和鼓励，才让我顺利完成了这门课程，这也是我在台湾最大的收获。</p>
+
+<p>关于课堂。之前只是听说过台湾的课堂教学很活跃，当我真正的身临其境，我也确实感受到了这一点。台湾的老师上课既有计划性又随行。在没开学之前，我们就可以在学校的网站上看到每门课每周的安排和评量标准，老师大概要讲什么内容，我们都可以提前知道，这样以便于我们随时可以按照老师的进度进行预习，也可以清楚老师这一学期的安排，这是老师的计划性。而老师的随行则体现在老师讲课的课堂上，他会随时补充一些知识，从天文到地理，从神话到传说，无不涉及。有时看到同学犯困，他们也会准备一些笑话来调节课堂气氛，对于交换生，他们都很友好，也都很愿意帮助我们。而台湾的同学们在课堂上也是非常的活跃，放得开。给我印象最深的就是在作报告的时候，大家会想尽一切办法呈现自己的报告，让大家对自己的报告有更深刻的印象。我印象最深的就是散文阅读这门课，大家在进行报告的时候用的方法可以说是五花八门。在介绍童玩的时候他们会带来自己亲手制作的童玩给大家进行演示；在介绍民族禁忌的时候他们会采用抢答的方式提高大家的参与度；在介绍台湾布袋戏的时候他们居然可以以唱戏的方式将布袋戏的知识穿插其中，让大家对布袋戏有更直观的了解；在介绍除夕来历的时候他们会提前拍好搞笑短片有助于大家更好的理解……我不禁惊叹于台湾同学的想象力，回想在北京的时候，老师也会让我们分组报告，但大家都只想到了以ppt的方式呈现，然后一味的照读ppt上的文字，上面讲的同学没有激情，底下的同学听得想睡觉。我觉得台湾同学这种活跃的想象力，确实值得我们好好学习。我想只有这样大家才会真的想听，真的愿意听你的报告，否则做了半天，其实只是为了给老师看，同学根本不会记得你讲过什么。</p>
+
+<p>关于生活。我在台湾的生活与我在北京的生活是很不一样的。因为我在北京上学从来不用住宿。但是到了台湾，是四个人一个宿舍，公共的卫生间和浴室。一个学期的住宿生活让我明白了什么“室友情”，让我体会到了住宿生活的乐趣。有好吃的大家一起分享，晚上躺在床上一起聊天、分享心事，一起去洗澡，一起去吃饭。走到哪都有个人能陪着你，让你不再寂寞。一个学期的住宿生活，让我充分的得到了锻炼，培养了自己的自立能力，也让我更加懂得了人与人之间的相处之道。</p>
+
+<p>在台湾的生活，对我来说是非常充实的。不上课的时候，我们会去到处看看。我震撼于阿里山的日出，穿梭在台北热闹的街道，沐浴着垦丁的阳光，沉醉于太鲁阁的美景。我感受到了台湾的静谧与喧闹，乡土与现代。在学习的同时，我也亲身体验了台湾的平民生活，感受到了台湾同胞们的热情好客。
+在台湾交流学习的时间虽然短暂，但却让我对台湾有了更清楚的认识，感受到了台湾的风土人情，切身体会到了台湾教育与大陆教育的异同，结交了许多知心好友，开阔了我的眼界，增加了我的人生阅历，为我的生活增姿添彩，在台湾的生活定会成为我生命中一段美好的回忆。</p></body></html>

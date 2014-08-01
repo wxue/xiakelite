@@ -20,6 +20,11 @@ def index():
     """Render website's index page."""
     return render_template('index.html')
 
+@views.route('/taiwan/')
+def taiwan():
+    """Render website's taiwan page."""
+    return render_template('taiwan.html')
+
 @views.route('/console/')
 @requires_auth
 def console():
