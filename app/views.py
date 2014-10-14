@@ -144,7 +144,7 @@ def get_note(number):
         return render_template('404.html'), 404
     
     return render_template(
-        'note.html',
+        'note_reading.html',
         note=note,
     )
    

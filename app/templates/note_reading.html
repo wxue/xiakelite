@@ -1,0 +1,21 @@
+{% extends "noteshub_base.html" %}
+
+{% block title %}{% endblock %}
+
+{% block main %}
+<!-- Content -->
+<div id="entry">
+    <h2 class="entry-title">{{ note.title }}</h2>
+    {% if note.tags %}Tags: {{ note.tags|link_tags|safe }}{% endif %} 
+
+    <div class="entry-content">
+    {{ note.content|pygments_markdown|safe }}
+    </div>
+
+    <div class="entry-meta">
+    <small> ->Time: {{ note.added|format_date }} <-</small>
+    </div>
+</div>
+<br><br>
+
+{% endblock %}
